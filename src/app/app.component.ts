@@ -20,6 +20,24 @@ export class AppComponent {
     console.log(this.appModel);
   }
 
+  getColor(checked: boolean): string {
+    if (checked) {
+      return 'green';
+    } else { 
+      return 'red';
+    }
+  }
+
+  changeCOlor(category: string): string {
+    if (category === 'Kaja') {
+      return 'red';
+    } else if (category === 'Pia') {
+      return 'green';
+    } else if (category === 'Nők') {
+      return 'blue';
+    }
+  }
+
 }
 
 
