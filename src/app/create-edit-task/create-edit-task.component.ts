@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { AppModel } from '../app.model';
 
 @Component({
@@ -10,13 +10,15 @@ export class CreateEditTaskComponent implements OnInit {
 
   @Input('model') appModel: AppModel;
 
+  @Output('show') showModelValue = new EventEmitter(); 
+
   constructor() { }
 
   ngOnInit() {
   }
 
   public showAppModelValue() {
-    console.log(this.appModel);
+    this.showModelValue.emit(this.appModel);
   }
   changeCOlor(category: string): string {
     if (category === 'Kaja') {

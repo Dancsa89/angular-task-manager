@@ -1,6 +1,6 @@
 <h1>Flow Task Manager</h1>
 
-<app-create-edit-task [model]="taskModel"></app-create-edit-task>
+<app-create-edit-task [model]="taskModel" (show)="showAppModelValue($event)"></app-create-edit-task>
 
 <form>
   <div>

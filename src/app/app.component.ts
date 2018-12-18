@@ -27,8 +27,8 @@ export class AppComponent {
 
   }
 
-  public showAppModelValue() {
-    console.log(this.appModel);
+  public showAppModelValue(event: AppModel) {
+    console.log(event);
   }
 
   getColor(checked: boolean): string {
