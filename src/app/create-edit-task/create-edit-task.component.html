@@ -1,0 +1,19 @@
+<form>
+    <label for="">Title</label>
+    <input [disabled]="appModel.checked" type="text" name="title" id="title" [(ngModel)]="appModel.title">
+  <!--  <p>{{appModel.title}}</p> -->
+    <label for="">Checked</label>
+    <input type="checkbox" name="checked" id="checked" [(ngModel)]="appModel.checked">
+  <!--  <p>{{appModel.checked}}</p> -->
+    <label [ngStyle]="{background: changeCOlor(appModel.category)}" for="">Category</label>
+    <select name="categories" id="categories" [(ngModel)]="appModel.category">
+      <option value="Kaja">Kaja</option>
+      <option value="Pia">Pia</option>
+      <option value="Nők">Nők</option>
+    </select>
+  <!--  <p>{{appModel.category}}</p> -->
+    <label for="">Text</label>
+    <input type="text" name="text" id="text" [(ngModel)]="appModel.text">
+  <!--  <p>{{appModel.text}}</p> -->
+    <button (click)="showAppModelValue()">Show me what you got!</button>   
+</form>

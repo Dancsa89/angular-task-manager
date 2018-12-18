@@ -1,22 +1,27 @@
+<h1>Flow Task Manager</h1>
+
+<app-create-edit-task [model]="taskModel"></app-create-edit-task>
+
 <form>
-  <h1>Flow Task Manager</h1>
   <div>
-    <label for="">Title</label>
-    <input [disabled]="appModel.checked" type="text" name="title" id="title" [(ngModel)]="appModel.title">
-    <p>{{appModel.title}}</p> 
-    <label for="">Checked</label>
-    <input type="checkbox" name="checked" id="checked" [(ngModel)]="appModel.checked">
-    <p>{{appModel.checked}}</p> 
-    <label [ngStyle]="{background: changeCOlor(appModel.category)}" for="">Category</label>
-    <select name="categories" id="categories" [(ngModel)]="appModel.category">
-      <option value="Kaja">Kaja</option>
-      <option value="Pia">Pia</option>
-      <option value="Nők">Nők</option>
-    </select>
-    <p>{{appModel.category}}</p> 
-    <label for="">Text</label>
-    <input type="text" name="text" id="text" [(ngModel)]="appModel.text">
-    <p>{{appModel.text}}</p> 
+    <h1>Sign Up</h1>
   </div>
-  <button (click)="showAppModelValue()">Show me what you got!</button>
+  <div>
+    <label>E-mail </label>
+    <input type="text" name="email" id="email" [(ngModel)]="signUpModel.email" (change)="validateEmail($event)">
+    <p *ngIf="emailInvalid" style="color: red">Write in a valid email format! (something@something.com)</p>
+  </div>
+  <div>
+    <label>Fullname </label>
+    <input type="text" name="fullname" id="fullname" [(ngModel)]="signUpModel.fullname" (blur)="validateFullName($event)">
+    <p *ngIf="fullnameInvalid" style="color: red">Full name must Start with uppercase!</p>
+  </div>
+  <div>
+    <label>Password </label>
+    <input type="text" name="password" id="password" [(ngModel)]="signUpModel.password">
+    <p></p>
+  </div>
 </form>
+<div>
+<button (click)="signUp()" type="submit">Sign Up</button>
+</div>
