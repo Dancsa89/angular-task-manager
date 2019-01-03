@@ -1,6 +1,89 @@
-<h1>Flow Task Manager</h1>
+<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+  <h5 class="my-0 mr-md-auto font-weight-normal">Flow Task Manager</h5>
+  <nav class="my-2 my-md-0 mr-md-3">
+    <a class="p-2 text-dark" href="#">Home</a>
+  </nav>
+  <a class="btn btn-outline-primary" href="#">Sign up</a>
+</div>
 
-<app-create-edit-task [model]="taskModel" (show)="showAppModelValue($event)"></app-create-edit-task>
+<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+  <h1 class="display-4">Add New Task
+    <a (click)="showNewTask(add_task_modal)">+</a>
+  </h1>
+  <p class="lead"></p>
+</div>
+
+<div class="container">
+  <div class="card-deck mb-3 text-center">
+    <div class="card mb-4 shadow-sm">
+      <div class="card-header">
+        <h4 class="my-0 font-weight-normal">Card Name</h4>
+      </div>
+      <div class="card-body">
+        <h3 class="card-title pricing-card-title">List values:</h3>
+        <ul class="list-unstyled mt-3 mb-4">
+          <li>Item 1</li>
+          <li>Item 2</li>
+          <li>Item 3</li>
+          <li>Item 4</li>
+        </ul>
+        <button type="button"
+        (click)="editlist(2)"
+        class="btn btn-lg btn-block btn-outline-primary">Edit List</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="pt-4 my-md-5 pt-md-5 border-top">
+  <div class="row">
+    <div class="col-12 col-md">
+      <img class="mb-2" src="../../assets/brand/bootstrap-solid.svg" alt="" width="24" height="24">
+      <small class="d-block mb-3 text-muted">&copy; 2017-2018</small>
+    </div>
+    <div class="col-6 col-md">
+      <h5>Features</h5>
+      <ul class="list-unstyled text-small">
+        <li><a class="text-muted" href="#">Cool stuff</a></li>
+        <li><a class="text-muted" href="#">Random feature</a></li>
+        <li><a class="text-muted" href="#">Team feature</a></li>
+        <li><a class="text-muted" href="#">Stuff for developers</a></li>
+        <li><a class="text-muted" href="#">Another one</a></li>
+        <li><a class="text-muted" href="#">Last time</a></li>
+      </ul>
+    </div>
+    <div class="col-6 col-md">
+      <h5>Resources</h5>
+      <ul class="list-unstyled text-small">
+        <li><a class="text-muted" href="#">Resource</a></li>
+        <li><a class="text-muted" href="#">Resource name</a></li>
+        <li><a class="text-muted" href="#">Another resource</a></li>
+        <li><a class="text-muted" href="#">Final resource</a></li>
+      </ul>
+    </div>
+    <div class="col-6 col-md">
+      <h5>About</h5>
+      <ul class="list-unstyled text-small">
+        <li><a class="text-muted" href="#">Team</a></li>
+        <li><a class="text-muted" href="#">Locations</a></li>
+        <li><a class="text-muted" href="#">Privacy</a></li>
+        <li><a class="text-muted" href="#">Terms</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<ng-template #add_task_modal>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Modal</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <app-create-edit-task [model]="taskModel" (show)="showAppModelValue($event)"></app-create-edit-task>
+  </div>
+</ng-template>
 
 <form>
   <div>
@@ -18,8 +101,8 @@
   </div>
   <div>
     <label>Password </label>
-    <input type="text" name="password" id="password" [(ngModel)]="signUpModel.password">
-    <p></p>
+    <input type="text" name="password" id="password" [(ngModel)]="signUpModel.password" (keypress)="validatePassword($event)">
+    <p class="{{passwordInvalid}}">{{passwordInvalid}}</p>>
   </div>
 </form>
 <div>
