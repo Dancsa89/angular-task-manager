@@ -8,27 +8,23 @@
 
 <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
   <h1 class="display-4">Add New Task
-    <a (click)="showNewTask(add_task_modal)">+</a>
+    <button (click)="showNewTask(add_task_modal)">+</button>
   </h1>
   <p class="lead"></p>
 </div>
 
 <div class="container">
   <div class="card-deck mb-3 text-center">
-    <div class="card mb-4 shadow-sm">
+    <div *ngFor="let task of tasks; let i = index" 
+    class="card mb-4 shadow-sm">
       <div class="card-header">
-        <h4 class="my-0 font-weight-normal">Card Name</h4>
+        <h4 class="my-0 font-weight-normal">{{task.title}}</h4>
       </div>
       <div class="card-body">
-        <h3 class="card-title pricing-card-title">List values:</h3>
-        <ul class="list-unstyled mt-3 mb-4">
-          <li>Item 1</li>
-          <li>Item 2</li>
-          <li>Item 3</li>
-          <li>Item 4</li>
-        </ul>
+        <h3 class="card-title pricing-card-title">Category: {{task.category}}</h3>
+        <p>{{task.text}}</p>
         <button type="button"
-        (click)="editlist(2)"
+        (click)="editlist(i, add_task_modal)"
         class="btn btn-lg btn-block btn-outline-primary">Edit List</button>
       </div>
     </div>
@@ -81,7 +77,7 @@
     </button>
   </div>
   <div class="modal-body">
-    <app-create-edit-task [model]="taskModel" (show)="showAppModelValue($event)"></app-create-edit-task>
+    <app-create-edit-task [model]="taskModel" (save)="showAppModelValue($event)"></app-create-edit-task>
   </div>
 </ng-template>
 

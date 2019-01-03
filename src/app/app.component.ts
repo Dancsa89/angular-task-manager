@@ -24,7 +24,9 @@ export class AppComponent {
 
   public signUpModel: SignUpModel = new SignUpModel;
   
-  modalRef: BsModalRef;
+  public modalRef: BsModalRef;
+
+  public tasks: AppModel[] = [];
 
   constructor(
     private modalService: BsModalService
@@ -32,15 +34,18 @@ export class AppComponent {
   }
 
   public showNewTask(modalContent: TemplateRef<any>) {
+    this.taskModel = new AppModel();
     this.modalRef = this.modalService.show(modalContent);
   }
 
-  public editlist(index: number) {
-    // TODO: show popup
+  public editlist(index: number, modalContent: TemplateRef<any>) {
+    this.taskModel = this.tasks[index];
+    this.modalRef = this.modalService.show(modalContent);
   }
 
   public showAppModelValue(event: AppModel) {
-    console.log(event);
+    this.modalRef.hide();
+    this.tasks.push(event);
   }
 
   getColor(checked: boolean): string {
