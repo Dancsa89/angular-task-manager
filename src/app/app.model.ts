@@ -11,9 +11,9 @@ export class AppModel {
 }
 
 export enum Category {  // ENUM ha nem adsz meg String értéket, akkor a tömbben elfoglalt helyét fogja visszadni
-  BILLING = 'BILLING', 
-  HOUSE = 'HOUSE', 
-  SHOPPING = 'SHOPPING', 
+  BILLING = 'BILLING',
+  HOUSE = 'HOUSE',
+  SHOPPING = 'SHOPPING',
   TRAVEL = 'TRAVEL'
 }
 
@@ -21,5 +21,5 @@ export interface AppInterface {
   title?: string;
   checked?: boolean;
   category?: string;
-  text?: string;  
+  text?: string;
 }

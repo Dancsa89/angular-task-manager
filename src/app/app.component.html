@@ -104,3 +104,8 @@
 <div>
 <button (click)="signUp()" type="submit">Sign Up</button>
 </div>
+
+<button class="btn btn-warning" (click)="getRocketData()">GET Rocket</button>
+<ul>
+  <li *ngFor="let data of rocketData">{{data}}</li>
+</ul>
